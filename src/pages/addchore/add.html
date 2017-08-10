@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Add New Chore</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
+            <ion-item>
+                <ion-label floating>Subject</ion-label>
+                <ion-input type="text" [formControl]="myForm.controls['subject']"></ion-input>
+            </ion-item>            
+            <ion-item>
+                <ion-label floating>Message</ion-label>
+                <ion-textarea type="text" [formControl]="myForm.controls['message']"></ion-textarea>
+            </ion-item>
+            <button block>
+                <ion-icon name="add"></ion-icon>Add</button>
+        </form>
+    </ion-list>
+    <button danger (click)="closeMe()">Submit</button>
+</ion-content>`

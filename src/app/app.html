@@ -18,13 +18,7 @@
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
 <ion-fab right bottom #fab>
-   <button ion-fab (click)="addChore.open()">
+   <button ion-fab (click)="addChore()">
        <ion-icon name="add"></ion-icon>
     </button>
  </ion-fab>
-  <modal #addChore title="New Chore" submitButtonLabel="submit" (onSubmit)="firstModal.open()">
-        <modal-content>
-            This modal has a submit button with your custom label. Also it can make an action after you
-            click that submit button. Here it will open you first modal after you click submit.
-        </modal-content>
-</modal>

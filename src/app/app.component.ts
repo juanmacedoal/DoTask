@@ -1,11 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, ViewController, NavController, ModalController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { TabsPage } from '../pages/tabs/tabs';
+import { MyModal } from '../pages/addchore/add';
 import { ConfigPage } from '../pages/config/config';
 
 
@@ -13,20 +13,21 @@ import { ConfigPage } from '../pages/config/config';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  @ViewChild(Nav) nav: Nav;
+  @ViewChild('myNav') nav: NavController
 
   rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public modalCtrl: ModalController, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Chores', component: ListPage },
-      { title: 'Config', component: ConfigPage }
+      { title: 'Config', component: ConfigPage },
+      { title: '', component: ConfigPage }
     ];
 
   }
@@ -47,6 +48,8 @@ export class MyApp {
   }
 
   addChore(){
-    
+    let modal = this.modalCtrl.create(MyModal);
+
+        modal.present();
   }
 }
