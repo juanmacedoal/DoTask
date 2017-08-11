@@ -10,6 +10,7 @@ import { ConfigPage } from '../pages/config/config';
 import { MyModal } from '../pages/addchore/add';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { DatePickerModule } from 'datepicker-ionic2';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    DatePickerModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

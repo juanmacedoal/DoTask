@@ -9,19 +9,30 @@
         <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
             <ion-item>
                 <ion-label floating>Chore</ion-label>
-                <ion-input type="text" [formControl]="chore"></ion-input>
-            </ion-item>            
+                <ion-input type="text" formControlName="chore"></ion-input>
+            </ion-item>
             <ion-item>
                 <ion-label floating>Description</ion-label>
-                <ion-textarea type="text" [formControl]="description"></ion-textarea>
+                <ion-textarea type="text" formControlName="description"></ion-textarea>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Note</ion-label>
+                <ion-textarea type="text" formControlName="note"></ion-textarea>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Add Mail</ion-label>
+                <ion-textarea type="text" formControlName="mail"></ion-textarea>
             </ion-item>
             <ion-item>
                 <ion-label floating>Date</ion-label>
-                <ion-textarea type="text" [formControl]="description"></ion-textarea>
+                <ion-datetime min="2000-10-31" max="2020-10-31" displayFormat="DD-MM-YYYY HH:mm" formControlName="localDate"></ion-datetime>
             </ion-item>
-            <button block>
-                <ion-icon name="add"></ion-icon>Add</button>
+            <ion-item>
+                <ion-label floating>Date alarm</ion-label>
+                <ion-datetime min="2000-10-31" max="2020-10-31" displayFormat="DD-MM-YYYY HH:mm" formControlName="localDateAlarm"></ion-datetime>          
+            </ion-item>
         </form>
     </ion-list>
-    <button danger (click)="closeMe()">Submit</button>
+    <button ion-button class="submit-btn" full type="submit" (click)="closeMe()">Add</button>
+    <button ion-button class="submit-btn" full type="submit" (click)="closeMe()">Cancel</button>    
 </ion-content>`
