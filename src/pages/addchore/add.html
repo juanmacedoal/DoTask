@@ -8,12 +8,16 @@
     <ion-list>
         <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
             <ion-item>
-                <ion-label floating>Subject</ion-label>
-                <ion-input type="text" [formControl]="myForm.controls['subject']"></ion-input>
+                <ion-label floating>Chore</ion-label>
+                <ion-input type="text" [formControl]="chore"></ion-input>
             </ion-item>            
             <ion-item>
-                <ion-label floating>Message</ion-label>
-                <ion-textarea type="text" [formControl]="myForm.controls['message']"></ion-textarea>
+                <ion-label floating>Description</ion-label>
+                <ion-textarea type="text" [formControl]="description"></ion-textarea>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Date</ion-label>
+                <ion-textarea type="text" [formControl]="description"></ion-textarea>
             </ion-item>
             <button block>
                 <ion-icon name="add"></ion-icon>Add</button>

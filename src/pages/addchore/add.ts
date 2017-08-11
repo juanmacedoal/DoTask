@@ -7,13 +7,15 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class MyModal {
 
-    constructor(formBuilder, private nav: NavController, private viewCtrl: ViewController, public alertctrl: AlertController) {
-        this.nav = nav;
-        this.myData = null;
+    myForm: FormGroup;
+
+    constructor(private formBuilder: FormBuilder, private nav: NavController, private viewCtrl: ViewController, public alertctrl: AlertController) {
         this.myForm = formBuilder.group({
-            'subject': '',
-            'message': ''
-        })
+            'chore': [''],
+            'description': [''],
+            'date': ['', ]
+            }
+        );
     }
 
     closeMe() {
