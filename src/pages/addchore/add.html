@@ -9,27 +9,27 @@
         <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
             <ion-item>
                 <ion-label floating>Chore</ion-label>
-                <ion-input type="text" formControlName="chore"></ion-input>
+                <ion-input type="text" formControlName="chore" [(ngModel)]="todos.chore"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>Description</ion-label>
-                <ion-textarea type="text" formControlName="description"></ion-textarea>
+                <ion-textarea type="text" formControlName="description" [(ngModel)]="todos.description" ></ion-textarea>
             </ion-item>
             <ion-item>
                 <ion-label floating>Note</ion-label>
-                <ion-textarea type="text" formControlName="note"></ion-textarea>
+                <ion-textarea type="text" formControlName="note" [(ngModel)]="todos.note" ></ion-textarea>
             </ion-item>
             <ion-item>
                 <ion-label floating>Add Mail</ion-label>
-                <ion-textarea type="text" formControlName="mail"></ion-textarea>
+                <ion-textarea type="text" formControlName="mail" [(ngModel)]="todos.mail"></ion-textarea>
             </ion-item>
             <ion-item>
                 <ion-label floating>Date</ion-label>
-                <ion-datetime min="2000-10-31" max="2020-10-31" displayFormat="DD-MM-YYYY HH:mm" formControlName="localDate"></ion-datetime>
+                <ion-datetime min="2000-10-31" max="2020-10-31" displayFormat="DD-MM-YYYY HH:mm" formControlName="localDate" [(ngModel)]="localDate" ></ion-datetime>
             </ion-item>
             <ion-item>
                 <ion-label floating>Date alarm</ion-label>
-                <ion-datetime min="2000-10-31" max="2020-10-31" displayFormat="DD-MM-YYYY HH:mm" formControlName="localDateAlarm"></ion-datetime>          
+                <ion-datetime min="2000-10-31" max="2020-10-31" displayFormat="DD-MM-YYYY HH:mm" formControlName="localDateAlarm" [(ngModel)]="todos.localDateAlarm"></ion-datetime>          
             </ion-item>
         </form>
     </ion-list>

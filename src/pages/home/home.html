@@ -9,7 +9,31 @@
 
 <ion-content padding>
     <h3>Chores to do</h3>
-
-
+   <ion-item>
+         {{item}}
+   </ion-item>
+    <ion-list>
+        <button ion-item *ngFor="let item of items">
+          <ion-icon [name]="item.chore" item-left></ion-icon>
+          {{item.description}}
+          <div class="item-note" item-right>
+            {{item.note}}
+          </div>
+          <div class="item-note" item-right>
+            {{item.mail}}
+          </div>
+          <div class="item-note" item-right>
+            {{item.note}}
+          </div>
+          <div class="item-note" item-right>
+            {{item.localDate}}
+          </div>
+          <div class="item-note" item-right>
+            {{item.localDateAlarm}}
+          </div>
+        </button>
+    </ion-list>
+    <div *ngIf="selectedItem" padding>
+        You navigated here from <b>{{selectedItem.title}}</b>
+    </div>
 </ion-content>
-

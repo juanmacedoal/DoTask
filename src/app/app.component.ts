@@ -7,13 +7,15 @@ import { ListPage } from '../pages/list/list';
 import { TabsPage } from '../pages/tabs/tabs';
 import { MyModal } from '../pages/addchore/add';
 import { ConfigPage } from '../pages/config/config';
+import { NativeStorage } from '@ionic-native/native-storage';
+
 
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  @ViewChild('myNav') nav: NavController
+  @ViewChild('content') nav: NavController
 
   rootPage: any = HomePage;
 
@@ -26,8 +28,7 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Chores', component: ListPage },
-      { title: 'Config', component: ConfigPage },
-      { title: '', component: ConfigPage }
+      { title: 'Config', component: ConfigPage }
     ];
 
   }
