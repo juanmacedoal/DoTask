@@ -8,28 +8,31 @@ import { NativeStorage } from '@ionic-native/native-storage';
 })
 export class HomePage {
 
-  private items: any;
-  private todos = {
-      chore: '',
-      description: '',
-      note: '',
-      localDate: '',
-      localDateAlarm: '',
-      mail: ''
-  };
+  private todos:any[] = [];
+  item:any=[];
+  
 
   constructor(private nativeStorage: NativeStorage, public navCtrl: NavController) {
     this.getLocal();
+  /*  this.todos = [{
+      chore: 'hola',
+      description: 'a',
+      note: 'aaa',
+      localDate: '',
+      localDateAlarm: '',
+      mail: 'aaa'
+  }];*/
   }
 
 
   getLocal(){
-    this.nativeStorage.getItem(this.todos.chore).then((d)=>{
-     console.log('getting native storage data',d);
-     this.items = d;
+    this.nativeStorage.getItem('todos').then((d)=>{
+     console.log('getting native storage dataaaaaa',d);
+     this.todos = Array.of(d);
+     console.log('getting ==', this.todos);
      
    },(e)=>{
-     console.log('getting err',e);
+     console.log('getting error',e);
    
    })
    }

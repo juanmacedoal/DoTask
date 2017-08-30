@@ -13,19 +13,19 @@
             </ion-item>
             <ion-item>
                 <ion-label floating>Description</ion-label>
-                <ion-textarea type="text" formControlName="description" [(ngModel)]="todos.description" ></ion-textarea>
+                <ion-input type="text" formControlName="description" [(ngModel)]="todos.description" ></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>Note</ion-label>
-                <ion-textarea type="text" formControlName="note" [(ngModel)]="todos.note" ></ion-textarea>
+                <ion-input type="text" formControlName="note" [(ngModel)]="todos.note" ></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>Add Mail</ion-label>
-                <ion-textarea type="text" formControlName="mail" [(ngModel)]="todos.mail"></ion-textarea>
+                <ion-input type="text" formControlName="mail" [(ngModel)]="todos.mail"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>Date</ion-label>
-                <ion-datetime min="2000-10-31" max="2020-10-31" displayFormat="DD-MM-YYYY HH:mm" formControlName="localDate" [(ngModel)]="localDate" ></ion-datetime>
+                <ion-datetime min="2000-10-31" max="2020-10-31" displayFormat="DD-MM-YYYY HH:mm" formControlName="localDate" [(ngModel)]="todos.localDate" ></ion-datetime>
             </ion-item>
             <ion-item>
                 <ion-label floating>Date alarm</ion-label>

@@ -55,7 +55,7 @@ export class MyModal {
                     handler: () => {
                         this.viewCtrl.dismiss();
 
-                            this.nativeStorage.setItem(this.todos.chore, this.todos.description).then((d)=>{
+                            this.nativeStorage.setItem('todos', this.todos).then((d)=>{
                                 console.log('storage save',d);
                            
                           

@@ -64,5 +64,9 @@
             "android",
             "browser"
         ]
+    },
+    "config": {
+        "ionic_bundler": "webpack",
+        "ionic_source_map": "source-map"
     }
 }

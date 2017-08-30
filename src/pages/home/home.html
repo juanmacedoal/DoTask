@@ -8,31 +8,27 @@
 </ion-header>
 
 <ion-content padding>
-    <h3>Chores to do</h3>
-   <ion-item>
-         {{item}}
-   </ion-item>
-    <ion-list>
-        <button ion-item *ngFor="let item of items">
-          <ion-icon [name]="item.chore" item-left></ion-icon>
-          {{item.description}}
-          <div class="item-note" item-right>
-            {{item.note}}
-          </div>
-          <div class="item-note" item-right>
-            {{item.mail}}
-          </div>
-          <div class="item-note" item-right>
-            {{item.note}}
-          </div>
-          <div class="item-note" item-right>
-            {{item.localDate}}
-          </div>
-          <div class="item-note" item-right>
-            {{item.localDateAlarm}}
-          </div>
-        </button>
-    </ion-list>
+    <h3>Chores to do {{todos.chore}}</h3>
+    <ion-list >
+    <ion-item *ngFor="let todo of todos">
+        {{todo.chore}}
+    <p>
+        {{todo.description}}
+    </p>
+    <p>
+        {{todo.localDate}}
+    <p>
+    <p>
+        {{todo.localDateAlarm}}
+    <p>
+    <p>
+        {{todo.mail}}
+    <p>
+    <p>
+        {{todo.note}}
+    </p>
+    </ion-item>
+</ion-list>
     <div *ngIf="selectedItem" padding>
         You navigated here from <b>{{selectedItem.title}}</b>
     </div>
