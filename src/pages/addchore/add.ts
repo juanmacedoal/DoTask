@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavController, ViewController, AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DatePickerModule } from 'datepicker-ionic2';
@@ -6,7 +6,7 @@ import { NativeStorage } from '@ionic-native/native-storage';
 
 @Component({
     selector: 'page-add',
-    templateUrl: 'add.html'
+    templateUrl: 'add.html',
 })
 export class MyModal {
 
@@ -29,7 +29,10 @@ export class MyModal {
         mail: ''
     };
 
-    constructor(private nativeStorage: NativeStorage, private formBuilder: FormBuilder, private nav: NavController, private viewCtrl: ViewController, public alertctrl: AlertController) {
+    constructor(private nativeStorage: NativeStorage, private formBuilder: FormBuilder,
+    private nav: NavController, private viewCtrl: ViewController, public alertctrl: AlertController) {
+        
+
         this.myForm = formBuilder.group({
             chore: [''],
             description: [''],

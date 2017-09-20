@@ -11,22 +11,7 @@
     <h3>Chores to do {{todos.chore}}</h3>
     <ion-list >
     <ion-item *ngFor="let todo of todos">
-        {{todo.chore}}
-    <p>
-        {{todo.description}}
-    </p>
-    <p>
-        {{todo.localDate}}
-    <p>
-    <p>
-        {{todo.localDateAlarm}}
-    <p>
-    <p>
-        {{todo.mail}}
-    <p>
-    <p>
-        {{todo.note}}
-    </p>
+            <div *ngIf="todo.localDateAlarm == localDate">{{todo.chore}}</div> 
     </ion-item>
 </ion-list>
     <div *ngIf="selectedItem" padding>

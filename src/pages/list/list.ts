@@ -1,31 +1,24 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component, Input } from '@angular/core';
+import { NavParams, Platform, ViewController, NavController, ModalController } from 'ionic-angular';
+import { MyModal } from '../addchore/add';
 
 @Component({
   selector: 'page-list',
-  templateUrl: 'list.html'
+  templateUrl: 'list.html',
 })
 export class ListPage {
   selectedItem: any;
   icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+  todos: any[] = [];
+  one: any[] = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    // If we navigated to this page, we will have an item available as a nav param
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, ) {
     this.selectedItem = navParams.get('item');
 
-    // Let's populate this page with some filler content for funzies
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
-
-    this.items = [];
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
+    this.todos = [{ chore: 'hola', description: 'a', note: 'aaa', localDate: '', localDateAlarm: '', mail: 'aaa' },
+    { chore: 'vaya', description: 'a', note: 'aaa', localDate: '', localDateAlarm: '', mail: 'aaa' },
+    { chore: 'hola', description: 'a', note: 'aaa', localDate: '', localDateAlarm: '', mail: 'aaa' }];
   }
 
   itemTapped(event, item) {
@@ -34,4 +27,22 @@ export class ListPage {
       item: item
     });
   }
+
+  viewChore(chore) {
+    console.log('Chore: ' + chore); this.one = this.todos.find(x => x.chore === chore);
+    console.log('Find the chore complete: ' + this.todos.find(x => x.chore === chore));
+    console.log(this.todos.find(x => x.chore === chore));
+    if (this.todos.find(x => x.chore === chore)) {
+      console.log('Entra en el if de lista ' + this.todos.find(x => x.chore === chore));  
+      this.one = this.todos.find(x => x.chore === chore);
+
+    }
+
+    let modal = this.modalCtrl.create(MyModal);
+    modal.present();
+  }
+
 }
+
+
+
