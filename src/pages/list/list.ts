@@ -16,7 +16,7 @@ export class ListPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, ) {
     this.selectedItem = navParams.get('item');
 
-    this.todos = [{ chore: 'hola', description: 'a', note: 'aaa', localDate: '', localDateAlarm: '', mail: 'aaa' },
+    this.todos = [{ chore: 'hola', description: 'a', note: 'aaa', localDate: [new Date().toISOString()], localDateAlarm: [new Date().toISOString()], mail: 'aaa' },
     { chore: 'vaya', description: 'a', note: 'aaa', localDate: '', localDateAlarm: '', mail: 'aaa' },
     { chore: 'hola', description: 'a', note: 'aaa', localDate: '', localDateAlarm: '', mail: 'aaa' }];
   }
@@ -38,7 +38,7 @@ export class ListPage {
 
     }
 
-    let modal = this.modalCtrl.create(MyModal);
+    let modal = this.modalCtrl.create(MyModal,  {chore: this.todos.find(x => x.chore === chore)});
     modal.present();
   }
 

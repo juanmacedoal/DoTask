@@ -17,6 +17,14 @@ import { NativeStorage } from '@ionic-native/native-storage';
 export class MyApp {
   @ViewChild('content') nav: NavController
 
+  todos = {
+    chore: '',
+    description: '',
+    note: '',
+    localDate: '',
+    localDateAlarm: '',
+    mail: ''
+  };
   rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
@@ -49,7 +57,7 @@ export class MyApp {
   }
 
   addChore(){
-    let modal = this.modalCtrl.create(MyModal);
+    let modal = this.modalCtrl.create(MyModal, {chore: this.todos});
 
         modal.present();
   }

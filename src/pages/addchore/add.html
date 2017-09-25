@@ -1,6 +1,7 @@
 <ion-header>
     <ion-navbar>
-        <ion-title>Add New Chore</ion-title>
+        <ion-title *ngIf="add === 1">Add New Chore</ion-title>
+        <ion-title *ngIf="edit === 1">Edit Chore</ion-title>
     </ion-navbar>
 </ion-header>
 <ion-content padding>
@@ -8,27 +9,27 @@
         <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
             <ion-item>
                 <ion-label floating>Chore</ion-label>
-                <ion-input type="text" formControlName="chore" [(ngModel)]="todos.chore"></ion-input>
+                <ion-input type="text" formControlName="chore" [(ngModel)]="todos.chore" value="{{chore}}"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>Description</ion-label>
-                <ion-input type="text" formControlName="description" [(ngModel)]="todos.description" ></ion-input>
+                <ion-input type="text" formControlName="description" [(ngModel)]="todos.description" value="{{description}}" ></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>Note</ion-label>
-                <ion-input type="text" formControlName="note" [(ngModel)]="todos.note" ></ion-input>
+                <ion-input type="text" formControlName="note" [(ngModel)]="todos.note" value="{{note}}"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>Add Mail</ion-label>
-                <ion-input type="text" formControlName="mail" [(ngModel)]="todos.mail"></ion-input>
+                <ion-input type="text" formControlName="mail" [(ngModel)]="todos.mail" value="{{mail}}"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>Date</ion-label>
-                <ion-datetime min="2000-10-31" max="2020-10-31" displayFormat="DD-MM-YYYY HH:mm" formControlName="localDate" [(ngModel)]="todos.localDate" ></ion-datetime>
+                <ion-datetime min="2000-10-31" max="2020-10-31" displayFormat="DD-MM-YYYY HH:mm" formControlName="localDate" [(ngModel)]="localDate" value=""></ion-datetime>
             </ion-item>
             <ion-item>
                 <ion-label floating>Date alarm</ion-label>
-                <ion-datetime min="2000-10-31" max="2020-10-31" displayFormat="DD-MM-YYYY HH:mm" formControlName="localDateAlarm" [(ngModel)]="todos.localDateAlarm"></ion-datetime>          
+                <ion-datetime min="2000-10-31" max="2020-10-31" displayFormat="DD-MM-YYYY HH:mm" formControlName="localDateAlarm" [(ngModel)]="localDateAlarm" value=""></ion-datetime>          
             </ion-item>
         </form>
     </ion-list>

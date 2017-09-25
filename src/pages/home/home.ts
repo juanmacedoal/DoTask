@@ -16,7 +16,7 @@ export class HomePage {
   constructor(private nativeStorage: NativeStorage, public navCtrl: NavController) {
     //this.getLocal();
    this.localDate = new Date().toISOString();
-   this.todos = [{ chore: 'hola', description: 'a', note: 'aaa', localDate: '', localDateAlarm: [new Date().toISOString()], mail: 'aaa'},
+   this.todos = [{ chore: 'hola', description: 'a', note: 'aaa', localDate: [new Date().toISOString()], localDateAlarm: [new Date().toISOString()], mail: 'aaa'},
                  { chore: 'hola', description: 'a', note: 'aaa', localDate: '', localDateAlarm: '', mail: 'aaa'},
                  { chore: 'hola', description: 'a', note: 'aaa', localDate: '', localDateAlarm: '', mail: 'aaa'},];
   }
