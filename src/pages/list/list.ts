@@ -11,10 +11,17 @@ export class ListPage {
   icons: string[];
   todos: any[] = [];
   one: any[] = [];
+  localDate: any;
+  todayDate: any;
+  tomorrowDate: any;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, ) {
     this.selectedItem = navParams.get('item');
+
+    this.todayDate = new Date().toISOString() 
+    this.localDate = new Date().getDate().toString() + '/' + new Date().getMonth().toString() + '/' + new Date().getFullYear().toString()  ;
+    this.tomorrowDate = new Date().toISOString();
 
     this.todos = [{ chore: 'hola', description: 'a', note: 'aaa', localDate: [new Date().toISOString()], localDateAlarm: [new Date().toISOString()], mail: 'aaa' },
     { chore: 'vaya', description: 'a', note: 'aaa', localDate: '', localDateAlarm: '', mail: 'aaa' },

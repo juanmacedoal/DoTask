@@ -1,14 +1,14 @@
 <ion-header>
     <ion-navbar>
-        <ion-title *ngIf="add === 1">Add New Chore</ion-title>
-        <ion-title *ngIf="edit === 1">Edit Chore</ion-title>
+        <ion-title *ngIf="add === 1">Add New Task</ion-title>
+        <ion-title *ngIf="edit === 1">Edit Task</ion-title>
     </ion-navbar>
 </ion-header>
 <ion-content padding>
     <ion-list>
         <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
             <ion-item>
-                <ion-label floating>Chore</ion-label>
+                <ion-label floating>Task</ion-label>
                 <ion-input type="text" formControlName="chore" [(ngModel)]="todos.chore" value="{{chore}}"></ion-input>
             </ion-item>
             <ion-item>

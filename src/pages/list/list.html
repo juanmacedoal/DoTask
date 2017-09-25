@@ -3,14 +3,29 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>List</ion-title>
+    <ion-title>List of Task</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content>
+<ion-content padding>
   <ion-list>
-    <button ion-item *ngFor="let todo of todos" (click)="viewChore(todo.chore)">
-            {{todo.chore}}
-    </button>
+      <div *ngFor="let todo of todos; let j = index">
+          <div>
+            <ion-label *ngIf="todo.localDateAlarm != todayDate && j > 1" style="white-space: normal; font-weight:bold;">{{localDate}}</ion-label>              
+            <ion-label *ngIf="todo.localDateAlarm == todayDate" style="white-space: normal; font-weight:bold;">Today {{localDate}}</ion-label>
+            <ion-item *ngIf="todo.localDateAlarm == todayDate">
+              <button ion-item (click)="viewChore(todo.chore)">                 
+                  </button>
+              <ion-label style="white-space: normal;">{{ todo.chore }}</ion-label>
+            </ion-item>
+          </div>
+          <div>
+            <button ion-item (click)="viewChore(todo.chore)">      
+                <ion-item *ngIf="todo.localDateAlarm != todayDate">       
+                </ion-item>
+                <ion-label style="white-space: normal;">{{ todo.chore }}</ion-label>
+            </button>
+          </div>
+    </div>
   </ion-list>
   <div *ngIf="selectedItem" padding>
     You navigated here from <b>{{selectedItem.title}}</b>

@@ -8,12 +8,16 @@
 </ion-header>
 
 <ion-content padding>
-    <h3>Chores to do {{todos.chore}}</h3>
-    <ion-list >
-    <ion-item *ngFor="let todo of todos">
-            <div *ngIf="todo.localDateAlarm == localDate">{{todo.chore}}</div> 
-    </ion-item>
-</ion-list>
+    <h3>Task to do</h3>
+    <ion-list>
+        <div *ngFor="let todo of todos; let j = index">
+            <ion-label *ngIf="todo.localDateAlarm == todayDate" style="white-space: normal; font-weight:bold;">Today {{localDate}}</ion-label>
+                <ion-item *ngIf="todo.localDateAlarm == todayDate">
+                    <ion-label style="white-space: normal;">{{ todo.chore }}</ion-label>
+                    <ion-checkbox (ionChange)="onChange(todo.chore)" value="todo.chore"></ion-checkbox>
+                </ion-item>
+        </div>
+    </ion-list>
     <div *ngIf="selectedItem" padding>
         You navigated here from <b>{{selectedItem.title}}</b>
     </div>
