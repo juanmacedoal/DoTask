@@ -17,15 +17,18 @@ export class ListPage {
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, ) {
+    
     this.selectedItem = navParams.get('item');
-
-    this.todayDate = new Date().toISOString() 
-    this.localDate = new Date().getDate().toString() + '/' + new Date().getMonth().toString() + '/' + new Date().getFullYear().toString()  ;
+    
+    this.todayDate = new Date().toDateString();
+    this.localDate = new Date().getDate().toString() + '/' + (new Date().getMonth() + 1).toString() + '/' + new Date().getFullYear().toString()  ;
     this.tomorrowDate = new Date().toISOString();
 
-    this.todos = [{ chore: 'hola', description: 'a', note: 'aaa', localDate: [new Date().toISOString()], localDateAlarm: [new Date().toISOString()], mail: 'aaa' },
-    { chore: 'vaya', description: 'a', note: 'aaa', localDate: '', localDateAlarm: '', mail: 'aaa' },
-    { chore: 'hola', description: 'a', note: 'aaa', localDate: '', localDateAlarm: '', mail: 'aaa' }];
+    this.todos = [{ chore: 'hola1', description: 'a3', note: 'aaa', localDate: [new Date().toDateString()], localDateAlarm: [new Date().toDateString()], mail: 'aaa' },
+    { chore: 'vaya2', description: 'a1', note: 's', localDate: '4/10/17', localDateAlarm: '4/10/17', mail: 'aaa' },
+    { chore: 'hola3', description: 'a2', note: 'a', localDate: '4/10/17', localDateAlarm: '4/10/17', mail: 'aaa' }];
+    console.log(this.todos);
+    console.log(this.todayDate);
   }
 
   itemTapped(event, item) {
