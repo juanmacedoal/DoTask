@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-navbar>
+    <ion-navbar color="primary">
         <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -10,12 +10,12 @@
 <ion-content padding>
     <h3>Task to do</h3>
     <ion-list>
+        <ion-label style="white-space: normal; font-weight:bold;">Today</ion-label>
         <div *ngFor="let todo of todos; let j = index">
-            <ion-label *ngIf="todo.localDateAlarm == todayDate" style="white-space: normal; font-weight:bold;">Today {{localDate}}</ion-label>
-                <ion-item *ngIf="todo.localDateAlarm == todayDate">
-                    <ion-label style="white-space: normal;">{{ todo.chore }}</ion-label>
-                    <ion-checkbox (ionChange)="onChange(todo.chore)" value="todo.chore"></ion-checkbox>
-                </ion-item>
+            <ion-item *ngIf="todo.localDateAlarm == todayDate">
+                <ion-label style="white-space: normal;">{{ todo.chore }}</ion-label>
+                <ion-checkbox (ionChange)="onChange(todo.chore)" value="todo.chore"></ion-checkbox>
+            </ion-item>
         </div>
     </ion-list>
     <div *ngIf="selectedItem" padding>

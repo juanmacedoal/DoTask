@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -8,53 +8,78 @@
 </ion-header>
 <ion-content padding>
   <ion-list>
-      <ion-label  style="white-space: normal; font-weight:bold;">{{ todayDate }}</ion-label>
-      <div *ngFor="let today of today; let j = index">
-        <div>       
-            <ion-label *ngIf="today.localDateAlarm == todayDate && j == 1" style="white-space: normal; font-weight:bold;">{{today.localDate}} {{j}}</ion-label>
-              <button ion-item (click)="viewChore(today.chore)">
+    <ion-label style="white-space: normal; font-weight:bold;" *ngIf="today != ''">Today</ion-label>
+    <div *ngFor="let today of today; let j = index">
+      <div>
+        <ion-item-sliding>
+        <ion-label *ngIf="today.localDateAlarm == todayDate && j == 1" style="white-space: normal; font-weight:bold;">{{today.localDate}} {{j}}</ion-label>
+        <button ion-item (click)="viewChore(today.chore)">
                 <ion-label style="white-space: normal;">{{ today.chore }}</ion-label>
-              </button>
-       </div>
-     </div>
+        </button>
+        <ion-item-options>
+            <button danger (click)="removeItem()"> <ion-icon name="trash"></ion-icon> Delete</button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </div>
+    </div>
   </ion-list>
   <ion-list>
-      <ion-label  style="white-space: normal; font-weight:bold;">{{ tomorrowDate}}</ion-label>
+    <ion-label style="white-space: normal; font-weight:bold;" *ngIf="date2 != ''">{{ tomorrowDate}}</ion-label>
     <div *ngFor="let date2 of date2; let j = index">
       <div>
-              <button ion-item (click)="viewChore(date2.chore)" *ngIf="date2.localDateAlarm == tomorrowDate">
+        <ion-item-sliding>
+        <button ion-item (click)="viewChore(date2.chore)" *ngIf="date2.localDateAlarm == tomorrowDate">
                 <ion-label style="white-space: normal;">{{ date2.chore }}</ion-label>
-              </button>
+        </button>
+        <ion-item-options>
+            <button danger (click)="removeItem()"> <ion-icon name="trash"></ion-icon>Delete</button>
+          </ion-item-options>
+        </ion-item-sliding>
       </div>
     </div>
   </ion-list>
   <ion-list>
+    <ion-label style="white-space: normal; font-weight:bold;" *ngIf="date3 != ''">{{ tomorrowDate2}}</ion-label>
     <div *ngFor="let date3 of date3; let j = index">
-        <ion-label  style="white-space: normal; font-weight:bold;">{{ tomorrowDate2}}</ion-label>
       <div>
-              <button ion-item (click)="viewChore(date3.chore)" *ngIf="date3.localDateAlarm == tomorrowDate2">
+        <ion-item-sliding>
+        <button ion-item (click)="viewChore(date3.chore)" *ngIf="date3.localDateAlarm == tomorrowDate2">
                 <ion-label style="white-space: normal;">{{ date3.chore }}</ion-label>
-              </button>
+        </button>
+        <ion-item-options>
+            <button danger (click)="removeItem()"> <ion-icon name="trash"></ion-icon>Delete</button>
+          </ion-item-options>
+        </ion-item-sliding>
       </div>
     </div>
   </ion-list>
   <ion-list>
-    <ion-label  style="white-space: normal; font-weight:bold;">{{ tomorrowDate3}}</ion-label>
+    <ion-label style="white-space: normal; font-weight:bold;" *ngIf="date4 != ''">{{ tomorrowDate3}}</ion-label>
     <div *ngFor="let date4 of date4; let j = index">
       <div>
-              <button ion-item (click)="viewChore(date4.chore)" *ngIf="date4.localDateAlarm == tomorrowDate3">
+        <ion-item-sliding>
+        <button ion-item (click)="viewChore(date4.chore)" *ngIf="date4.localDateAlarm == tomorrowDate3">
                 <ion-label style="white-space: normal;">{{ date4.chore }}</ion-label>
-              </button>
+        </button>
+        <ion-item-options>
+            <button danger (click)="removeItem()"> <ion-icon name="trash"></ion-icon>Delete</button>
+          </ion-item-options>
+        </ion-item-sliding>
       </div>
     </div>
   </ion-list>
   <ion-list>
-      <ion-label  style="white-space: normal; font-weight:bold;" *ngIf="todos.localDateAlarm == tomorrowDate4">{{ tomorrowDate4}}</ion-label>
+    <ion-label style="white-space: normal; font-weight:bold;" *ngIf="date5 != ''">{{ tomorrowDate4}}</ion-label>
     <div *ngFor="let todo of todos; let j = index">
       <div>
-              <button ion-item (click)="viewChore(todo.chore)" *ngIf="todo.localDateAlarm == tomorrowDate4">
+        <ion-item-sliding>
+        <button ion-item (click)="viewChore(todo.chore)" *ngIf="todo.localDateAlarm == tomorrowDate4">
                 <ion-label style="white-space: normal;">{{ todo.chore }}</ion-label>
-              </button>
+        </button>
+        <ion-item-options>
+            <button danger (click)="removeItem()"> <ion-icon name="trash"></ion-icon> Delete</button>
+          </ion-item-options>
+        </ion-item-sliding>
       </div>
     </div>
   </ion-list>

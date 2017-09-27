@@ -54,7 +54,7 @@ export class ListPage {
     { chore: 'vaya2', description: 'a1', note: 's', localDate: '28/9/2017', localDateAlarm: '28/9/2017', mail: 'aaa' },
     { chore: 'vaya5', description: 'a534', note: '43s', localDate: '28/9/2017', localDateAlarm: '28/9/2017', mail: 'aaa' },
     { chore: 'vaya8', description: 'a1', note: 's', localDate: '30/9/2017', localDateAlarm: '30/9/2017', mail: 'aaa' },
-    { chore: 'hola3', description: 'a2', note: 'a', localDate: '29/10/2017', localDateAlarm: '29/10/2017', mail: 'aaa' }];
+    { chore: 'hola3', description: 'a2', note: 'a', localDate: '29/9/2017', localDateAlarm: '29/9/2017', mail: 'aaa' }];
 
   }
 
@@ -78,15 +78,15 @@ export class ListPage {
         console.log(this.date2);
         j++;
       }
-      if (this.todos[count].localDateAlarm== this.tomorrowDate2) {
+      if (this.todos[count].localDateAlarm == this.tomorrowDate2) {
         this.date3[k] = this.todos[count];
-        console.log('If date 3 ' + this.date3);
+        console.log('If date 3 cont: ' + this.date3);
         console.log(this.date3);
         k++;
       }
-      if (this.todos[count].localDateAlarm== this.tomorrowDate3) {
+      if (this.todos[count].localDateAlarm == this.tomorrowDate3) {
         this.date4[l] = this.todos[count];
-        console.log('If date 4 ' + this.date4);
+        console.log('If date 4 cont: ' + this.date4);
         console.log(this.date4);
         l++;
 
