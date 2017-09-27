@@ -7,7 +7,6 @@ import { ListPage } from '../pages/list/list';
 import { TabsPage } from '../pages/tabs/tabs';
 import { MyModal } from '../pages/addchore/add';
 import { ConfigPage } from '../pages/config/config';
-import { NativeStorage } from '@ionic-native/native-storage';
 
 
 

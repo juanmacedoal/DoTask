@@ -11,7 +11,7 @@ import { MyModal } from '../pages/addchore/add';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { DatePickerModule } from 'datepicker-ionic2';
-import { NativeStorage } from '@ionic-native/native-storage';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,9 @@ import { NativeStorage } from '@ionic-native/native-storage';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    DatePickerModule
+    DatePickerModule,
+    SQLite,
+    SQLiteObject
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -39,7 +41,8 @@ import { NativeStorage } from '@ionic-native/native-storage';
   providers: [
     StatusBar,
     SplashScreen,
-    NativeStorage,
+    SQLite,
+    SQLiteObject,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

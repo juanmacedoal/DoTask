@@ -1,5 +1,5 @@
 <ion-header>
-        <ion-navbar color="primary">
+    <ion-navbar color="primary">
         <ion-title *ngIf="add === 1">Add New Task</ion-title>
         <ion-title *ngIf="edit === 1">Edit Task</ion-title>
     </ion-navbar>
@@ -13,7 +13,7 @@
             </ion-item>
             <ion-item>
                 <ion-label floating>Description</ion-label>
-                <ion-input type="text" formControlName="description" [(ngModel)]="todos.description" value="{{description}}" ></ion-input>
+                <ion-input type="text" formControlName="description" [(ngModel)]="todos.description" value="{{description}}"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>Note</ion-label>
@@ -24,15 +24,12 @@
                 <ion-input type="text" formControlName="mail" [(ngModel)]="todos.mail" value="{{mail}}"></ion-input>
             </ion-item>
             <ion-item>
-                <ion-label floating>Date</ion-label>
-                <ion-datetime min="2000-10-31" max="2020-10-31" displayFormat="DD/MM/YYYY" formControlName="localDate" [(ngModel)]="localDate" value=""></ion-datetime>
-            </ion-item>
-            <ion-item>
                 <ion-label floating>Date alarm</ion-label>
-                <ion-datetime min="2000-10-31" max="2020-10-31" displayFormat="DD/MM/YYYY" formControlName="localDateAlarm" [(ngModel)]="localDateAlarm" value=""></ion-datetime>          
+                <ion-datetime min="2000-10-31" max="2020-10-31" displayFormat="DD/MM/YYYY" formControlName="localDateAlarm" [(ngModel)]="localDateAlarm"
+                    value=""></ion-datetime>
             </ion-item>
         </form>
     </ion-list>
     <button ion-button class="submit-btn" full type="submit" (click)="closeMe()">Add</button>
-    <button ion-button class="submit-btn" full type="submit" (click)="closeMe()">Cancel</button>    
+    <button ion-button class="submit-btn" full type="submit" (click)="closeMe()">Cancel</button>
 </ion-content>`
