@@ -16,7 +16,7 @@ export class HomePage {
 
 
   constructor(private nativeStorage: NativeStorage, public navCtrl: NavController) {
-    //this.getLocal();
+ 
     this.todayDate = new Date().toISOString() 
     this.localDate = new Date().getDate().toString() + '/' + new Date().getMonth().toString() + '/' + new Date().getFullYear().toString()  ;
     this.tomorrowDate = new Date().toISOString();

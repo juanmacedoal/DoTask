@@ -9,11 +9,9 @@ import { MyModal } from '../addchore/add';
 export class ListPage {
   @Input() count: any = 0;
 
-  selectedItem: any;
-
   one: any[] = [];
   todos: any[] = [];
-  date: any[] = [];
+  today: any[] = [];
   date2: any[] = [];
   date3: any[] = [];
   date4: any[] = [];
@@ -27,7 +25,7 @@ export class ListPage {
   tomorrowDate4: any;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, ) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
 
     this.assign();
     this.fillArrays();
@@ -41,6 +39,8 @@ export class ListPage {
 
   assign(){
 
+    console.log('Assign vars')
+
     this.todayDate = new Date().getDate().toString() + '/' + (new Date().getMonth() + 1).toString() + '/' + new Date().getFullYear().toString();
     this.tomorrowDate = (new Date().getDate() + 1).toString() + '/' + (new Date().getMonth() + 1).toString() + '/' + new Date().getFullYear().toString();
     this.tomorrowDate2 = (new Date().getDate() + 2).toString() + '/' + (new Date().getMonth() + 1).toString() + '/' + new Date().getFullYear().toString();
@@ -51,56 +51,65 @@ export class ListPage {
     this.todos = [
     {chore: 'hola1', description: 'a3', note: 'aaa', localDate: new Date().getDate().toString() + '/' + (new Date().getMonth() + 1).toString() + '/' + new Date().getFullYear().toString(),
       localDateAlarm: new Date().getDate().toString() + '/' + (new Date().getMonth() + 1).toString() + '/' + new Date().getFullYear().toString(), mail: 'aaa'},
-    { chore: 'vaya2', description: 'a1', note: 's', localDate: '27/9/2017', localDateAlarm: '27/9/2017', mail: 'aaa' },
-    { chore: 'vaya5', description: 'a534', note: '43s', localDate: '27/9/2017', localDateAlarm: '27/9/2017', mail: 'aaa' },
-    { chore: 'vaya8', description: 'a1', note: 's', localDate: '27/9/2017', localDateAlarm: '27/9/2017', mail: 'aaa' },
-    { chore: 'hola3', description: 'a2', note: 'a', localDate: '4/10/2017', localDateAlarm: '4/10/2017', mail: 'aaa' }];
+    { chore: 'vaya2', description: 'a1', note: 's', localDate: '28/9/2017', localDateAlarm: '28/9/2017', mail: 'aaa' },
+    { chore: 'vaya5', description: 'a534', note: '43s', localDate: '28/9/2017', localDateAlarm: '28/9/2017', mail: 'aaa' },
+    { chore: 'vaya8', description: 'a1', note: 's', localDate: '30/9/2017', localDateAlarm: '30/9/2017', mail: 'aaa' },
+    { chore: 'hola3', description: 'a2', note: 'a', localDate: '29/10/2017', localDateAlarm: '29/10/2017', mail: 'aaa' }];
 
   }
 
 
   fillArrays() {
-    console.log('antes del for' + this.todos.find(x => x.localDateAlarm === this.todayDate));
-    var i = 0, j = 0, k = 0, l = 0;
 
-    while (this.todos.length > this.count) {
-      this.todos[this.count].localDateAlarm 
-      if (this.todos[this.count].localDateAlarm == this.todayDate) {
-        this.date[i] = this.todos.find(x => x.localDateAlarm === this.todayDate);
-        console.log('If date 1 cont: ' + this.count + this.date);
-        console.log(this.date);
+    console.log('Fill arrays')
+    var i = 0, j = 0, k = 0, l = 0, m = 0, count = 0;
+
+    while (this.todos.length > count) {
+       
+      if (this.todos[count].localDateAlarm == this.todayDate) {
+        this.today[i] = this.todos[count];
+        console.log('If date 1 cont: ' + count);
+        console.log(this.today);
         i++;
       }
-      if (this.todos[this.count].localDateAlarm== this.tomorrowDate) {
-        this.date2[j] = this.todos.find(x => x.localDateAlarm === this.tomorrowDate);
-        console.log('If date 2 cont: ' + this.count+ this.date2);
+      if (this.todos[count].localDateAlarm == this.tomorrowDate) {
+        this.date2[j] = this.todos[count];
+        console.log('If date 2 cont: ' + count);
         console.log(this.date2);
         j++;
       }
-      if (this.todos[this.count].localDateAlarm== this.tomorrowDate2) {
-        this.date3[k] = this.todos.find(x => x.localDateAlarm === this.tomorrowDate2);
+      if (this.todos[count].localDateAlarm== this.tomorrowDate2) {
+        this.date3[k] = this.todos[count];
         console.log('If date 3 ' + this.date3);
+        console.log(this.date3);
         k++;
       }
-      if (this.todos[this.count].localDateAlarm== this.tomorrowDate3) {
-        this.date4 = this.todos.find(x => x.localDateAlarm === this.tomorrowDate3);
+      if (this.todos[count].localDateAlarm== this.tomorrowDate3) {
+        this.date4[l] = this.todos[count];
         console.log('If date 4 ' + this.date4);
+        console.log(this.date4);
+        l++;
+
       }
-      if (this.todos[this.count].localDateAlarm == this.tomorrowDate4) {
-        this.date5 = this.todos.find(x => x.localDateAlarm === this.tomorrowDate4);
+      if (this.todos[count].localDateAlarm == this.tomorrowDate4) {
+        this.date5[m] = this.todos[count];
         console.log('If date 5 ' + this.date5);
+        console.log(this.date5);
+        m++;
      }
      
-     this.count++;
+     count++;
     }
    
   }
 
   viewChore(chore) {
-    console.log('Chore: ' + chore); this.one = this.todos.find(x => x.chore === chore);
+
+    console.log('View chore');
     console.log('Find the chore complete: ' + this.todos.find(x => x.chore === chore));
-    console.log(this.todos.find(x => x.chore === chore));
+
     if (this.todos.find(x => x.chore === chore)) {
+     
       console.log('Entra en el if de lista ' + this.todos.find(x => x.chore === chore));
       this.one = this.todos.find(x => x.chore === chore);
 

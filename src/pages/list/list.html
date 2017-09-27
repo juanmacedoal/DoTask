@@ -8,49 +8,50 @@
 </ion-header>
 <ion-content padding>
   <ion-list>
-    <ion-label style="white-space: normal; font-weight:bold;">Today</ion-label>
-      <div *ngFor="let date2 of dates">
+      <ion-label  style="white-space: normal; font-weight:bold;">{{ todayDate }}</ion-label>
+      <div *ngFor="let today of today; let j = index">
         <div>       
-              <button ion-item (click)="viewChore(todo.chore)">
+            <ion-label *ngIf="today.localDateAlarm == todayDate && j == 1" style="white-space: normal; font-weight:bold;">{{today.localDate}} {{j}}</ion-label>
+              <button ion-item (click)="viewChore(today.chore)">
+                <ion-label style="white-space: normal;">{{ today.chore }}</ion-label>
+              </button>
+       </div>
+     </div>
+  </ion-list>
+  <ion-list>
+      <ion-label  style="white-space: normal; font-weight:bold;">{{ tomorrowDate}}</ion-label>
+    <div *ngFor="let date2 of date2; let j = index">
+      <div>
+              <button ion-item (click)="viewChore(date2.chore)" *ngIf="date2.localDateAlarm == tomorrowDate">
                 <ion-label style="white-space: normal;">{{ date2.chore }}</ion-label>
               </button>
       </div>
     </div>
   </ion-list>
   <ion-list>
-    <div *ngFor="let todo of todos; let k = count">
+    <div *ngFor="let date3 of date3; let j = index">
+        <ion-label  style="white-space: normal; font-weight:bold;">{{ tomorrowDate2}}</ion-label>
       <div>
-          <ion-label *ngIf="todo.localDateAlarm == tomorrowDate" style="white-space: normal; font-weight:bold;">{{todo.localDate}}{{k}}</ion-label>
-              <button ion-item (click)="viewChore(todo.chore)" *ngIf="todo.localDateAlarm == tomorrowDate">
-                <ion-label style="white-space: normal;">{{ todo.chore }}</ion-label>
+              <button ion-item (click)="viewChore(date3.chore)" *ngIf="date3.localDateAlarm == tomorrowDate2">
+                <ion-label style="white-space: normal;">{{ date3.chore }}</ion-label>
               </button>
       </div>
     </div>
   </ion-list>
   <ion-list>
-    <div *ngFor="let todo of todos; let j = index">
+    <ion-label  style="white-space: normal; font-weight:bold;">{{ tomorrowDate3}}</ion-label>
+    <div *ngFor="let date4 of date4; let j = index">
       <div>
-          <ion-label *ngIf="todo.localDateAlarm == tomorrowDate2" style="white-space: normal; font-weight:bold;">{{todo.localDate}}</ion-label>
-              <button ion-item (click)="viewChore(todo.chore)" *ngIf="todo.localDateAlarm == tomorrowDate2">
-                <ion-label style="white-space: normal;">{{ todo.chore }}</ion-label>
+              <button ion-item (click)="viewChore(date4.chore)" *ngIf="date4.localDateAlarm == tomorrowDate3">
+                <ion-label style="white-space: normal;">{{ date4.chore }}</ion-label>
               </button>
       </div>
     </div>
   </ion-list>
   <ion-list>
+      <ion-label  style="white-space: normal; font-weight:bold;" *ngIf="todos.localDateAlarm == tomorrowDate4">{{ tomorrowDate4}}</ion-label>
     <div *ngFor="let todo of todos; let j = index">
       <div>
-          <ion-label *ngIf="todo.localDateAlarm == tomorrowDate3" style="white-space: normal; font-weight:bold;">{{todo.localDate}}</ion-label>
-              <button ion-item (click)="viewChore(todo.chore)" *ngIf="todo.localDateAlarm == tomorrowDate3">
-                <ion-label style="white-space: normal;">{{ todo.chore }}</ion-label>
-              </button>
-      </div>
-    </div>
-  </ion-list>
-  <ion-list>
-    <div *ngFor="let todo of todos; let j = index">
-      <div>
-          <ion-label *ngIf="todo.localDateAlarm == tomorrowDate4" style="white-space: normal; font-weight:bold;">{{todo.localDate}}</ion-label>
               <button ion-item (click)="viewChore(todo.chore)" *ngIf="todo.localDateAlarm == tomorrowDate4">
                 <ion-label style="white-space: normal;">{{ todo.chore }}</ion-label>
               </button>
