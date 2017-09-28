@@ -10,7 +10,7 @@ import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 })
 export class MyModal {
 
-    sqlstorage: SQLiteObject;
+    private db: SQLiteObject;
 
     myForm: FormGroup;
     chore: any;
@@ -41,7 +41,7 @@ export class MyModal {
 
         this.requestChore();
         this.assign(formBuilder);
-        this.createDB(sqlite);
+        this.createDB();
 
     }
 
@@ -87,7 +87,7 @@ export class MyModal {
 
     }
 
-    createDB(sqlite) {
+    createDB() {
 
         this.sqlite.create({
             name: 'data.db',
@@ -95,8 +95,8 @@ export class MyModal {
         })
             .then((db: SQLiteObject) => {
 
-
-                db.executeSql('create table task(chore VARCHAR(32), description VARCHAR(32), note VARCHAR(32), mail VARCHAR(32), alarm CHARACTER(20)', {})
+                this.db = db;
+                this.db.executeSql('create table task(chore VARCHAR(32), description VARCHAR(32), note VARCHAR(32), mail VARCHAR(32), alarm CHARACTER(20))', {})
                     .then(() => console.log('Executed SQL'))
                     .catch(e => console.log(e));
 
@@ -117,19 +117,17 @@ export class MyModal {
 
                         let sql = 'INSERT INTO task(chore, description, note, mail, alarm) VALUES(?,?,?,?,?)';
 
-                        this.sqlstorage.executeSql(sql, [this.chore, this.description, this.note, this.mail, this.localDateAlarm])
+                        this.db.executeSql(sql, [this.chore, this.description, this.note, this.mail, this.localDateAlarm])
                             .then(response => {
                                 
                                 console.log('save');
-                                return this.sqlstorage;              
+                                return this.db;              
  
                             }, (e) => {
                 
                                 console.log('unable to save', e);
 
                             })
-
-
                     }
                 },
                 {
