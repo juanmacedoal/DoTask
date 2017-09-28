@@ -3,6 +3,7 @@ import { NavController, ViewController, AlertController, NavParams } from 'ionic
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DatePickerModule } from 'datepicker-ionic2';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+import { DatabaseProvider } from './../../providers/database';
 
 @Component({
     selector: 'page-add',
@@ -24,6 +25,7 @@ export class MyModal {
     min: string = '';
     max: any;
     items: any;
+    todos2 = [];
     todos = {
         chore: '',
         description: '',
@@ -33,7 +35,7 @@ export class MyModal {
         mail: ''
     };
 
-    constructor(private formBuilder: FormBuilder, params: NavParams, private sqlite: SQLite,
+    constructor(private formBuilder: FormBuilder, params: NavParams, private sqlite: SQLite, private databaseprovider: DatabaseProvider,
         private nav: NavController, private viewCtrl: ViewController, public alertctrl: AlertController) {
 
         console.log('hola add: ' + params.get('chore'));
@@ -41,9 +43,20 @@ export class MyModal {
 
         this.requestChore();
         this.assign(formBuilder);
-        this.createDB();
+        
+        this.databaseprovider.getDatabaseState().subscribe(rdy => {
+            if (rdy) {
+              this.loadTask();
+            }
+          })
 
     }
+
+    loadTask(){
+        this.databaseprovider.getAlltask().then(data => {
+          this.todos2 = data;
+        })
+      }
 
     assign(formBuilder) {
 
@@ -87,23 +100,7 @@ export class MyModal {
 
     }
 
-    createDB() {
-
-        this.sqlite.create({
-            name: 'data.db',
-            location: 'default'
-        })
-            .then((db: SQLiteObject) => {
-
-                this.db = db;
-                this.db.executeSql('create table task(chore VARCHAR(32), description VARCHAR(32), note VARCHAR(32), mail VARCHAR(32), alarm CHARACTER(20))', {})
-                    .then(() => console.log('Executed SQL'))
-                    .catch(e => console.log(e));
-
-
-            }).catch(e => console.log(e));
-
-    }
+ 
 
 
     closeMe() {
@@ -115,19 +112,7 @@ export class MyModal {
                     handler: () => {
                         this.viewCtrl.dismiss();
 
-                        let sql = 'INSERT INTO task(chore, description, note, mail, alarm) VALUES(?,?,?,?,?)';
-
-                        this.db.executeSql(sql, [this.chore, this.description, this.note, this.mail, this.localDateAlarm])
-                            .then(response => {
-                                
-                                console.log('save');
-                                return this.db;              
- 
-                            }, (e) => {
-                
-                                console.log('unable to save', e);
-
-                            })
+                        
                     }
                 },
                 {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { DatabaseProvider } from './../../providers/database';
 
 @Component({
   selector: 'page-home',
@@ -14,12 +15,24 @@ export class HomePage {
   tomorrowDate: any;
 
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private databaseprovider: DatabaseProvider,) {
  
     this.assign();
 
     console.log(this.todos);
-  }
+    this.databaseprovider.getDatabaseState().subscribe(rdy => {
+      if (rdy) {
+        this.loadTask();
+      }
+    })
+
+}
+
+loadTask(){
+  this.databaseprovider.getAlltask().then(data => {
+    this.todos = data;
+  })
+}
 
   assign(){
     

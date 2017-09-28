@@ -12,7 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { DatePickerModule } from 'datepicker-ionic2';
 import { SQLite } from '@ionic-native/sqlite';
-
+import { DatabaseProvider } from './../providers/database';
 
 @NgModule({
   declarations: [
@@ -38,6 +38,7 @@ import { SQLite } from '@ionic-native/sqlite';
     MyModal
   ],
   providers: [
+    DatabaseProvider,
     StatusBar,
     SplashScreen,
     SQLite,
