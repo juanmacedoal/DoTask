@@ -109,12 +109,12 @@ export class MyModal {
                     text: 'Yes',
                     handler: () => {
                         this.viewCtrl.dismiss();
-                        console.log("Add " + this.chore + ' ' + this.description + ' ' + this.note + ' ' + this.mail + ' ' + this.localDateAlarm);
+                        console.log("Add " + this.chore + ' ' + this.description + ' ' + this.note + ' ' + this.mail + ' ' + this.localDateAlarm.toString());
                         this.databaseprovider.addtask(this.chore,
                             this.description,
                             this.note,                
                             this.mail,
-                            this.localDateAlarm,);
+                            this.localDateAlarm.toString());
                     }
                 },
                 {

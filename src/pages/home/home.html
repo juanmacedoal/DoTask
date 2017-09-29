@@ -10,7 +10,13 @@
 <ion-content padding>
     <h3>Task to do</h3>
     <ion-list>
-        <ion-label style="white-space: normal; font-weight:bold;">Today</ion-label>
+        <ion-label style="white-space: normal; position:absolute;
+        left: 40%;
+        right: 0;
+        margin:0 auto;
+        top:50%;
+        transform:translateY(-50%);" *ngIf="thereis == 0 ">0 Tasks Today</ion-label>
+        <ion-label style="white-space: normal; font-weight:bold;" *ngIf="thereis == 1">Today</ion-label>
         <div *ngFor="let todo of todos; let j = index">
             <ion-item *ngIf="todo.localDateAlarm == todayDate">
                 <ion-label style="white-space: normal;">{{ todo.chore }}</ion-label>

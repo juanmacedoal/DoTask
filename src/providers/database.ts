@@ -28,10 +28,10 @@ export class DatabaseProvider {
                 .then((db: SQLiteObject) => {
 
                     this.database = db;
-                    this.database.executeSql('create table if not exists task(chore VARCHAR(32), description VARCHAR(32), note VARCHAR(32), mail VARCHAR(32), alarm CHARACTER(20))', {})
+                    this.database.executeSql('create table if not exists task(chore VARCHAR(32), description VARCHAR(32), note VARCHAR(32), mail VARCHAR(32), alarm VARCHAR(32))', {})
                         .then(() => console.log('Executed SQL'))
                         .catch(e => console.log(e));
-
+                        this.databaseReady.next(true);
 
                 }).catch(e => console.log(e));
 
@@ -61,12 +61,14 @@ export class DatabaseProvider {
             let todos = [];
             if (data.rows.length > 0) {
                 for (var i = 0; i < data.rows.length; i++) {
+                    console.log(data.rows.item(i).localDateAlarm);
                     todos.push({
-                        chore: data.rows.item(i).chore, description: data.rows.item(i).description, note: data.rows.item(i).note, mail: data.rows.item(i).mail
-                        , localDateAlarm: data.rows.item(i).localDateAlarm
+                        chore: data.rows.item(i).chore, description: data.rows.item(i).description, note: data.rows.item(i).note, 
+                        mail: data.rows.item(i).mail, localDateAlarm: data.rows.item(i).alarm
                     });
                 }
             }
+            console.log(todos);
             return todos;
         }, err => {
             console.log('Error: ', err);
