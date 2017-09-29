@@ -9,19 +9,19 @@
         <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
             <ion-item>
                 <ion-label floating>Task</ion-label>
-                <ion-input type="text" formControlName="chore" [(ngModel)]="todos.chore" value="{{chore}}"></ion-input>
+                <ion-input type="text" formControlName="chore" [(ngModel)]="chore" value="{{chore}}"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>Description</ion-label>
-                <ion-input type="text" formControlName="description" [(ngModel)]="todos.description" value="{{description}}"></ion-input>
+                <ion-input type="text" formControlName="description" [(ngModel)]="description" value="{{description}}"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>Note</ion-label>
-                <ion-input type="text" formControlName="note" [(ngModel)]="todos.note" value="{{note}}"></ion-input>
+                <ion-input type="text" formControlName="note" [(ngModel)]="note" value="{{note}}"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>Add Mail</ion-label>
-                <ion-input type="text" formControlName="mail" [(ngModel)]="todos.mail" value="{{mail}}"></ion-input>
+                <ion-input type="text" formControlName="mail" [(ngModel)]="mail" value="{{mail}}"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>Date alarm</ion-label>

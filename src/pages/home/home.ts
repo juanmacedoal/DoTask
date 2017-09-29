@@ -31,6 +31,7 @@ export class HomePage {
 loadTask(){
   this.databaseprovider.getAlltask().then(data => {
     this.todos = data;
+    console.log(data);
   })
 }
 

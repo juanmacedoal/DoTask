@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { NavController, ViewController, AlertController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DatePickerModule } from 'datepicker-ionic2';
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { DatabaseProvider } from './../../providers/database';
 
 @Component({
@@ -11,7 +10,6 @@ import { DatabaseProvider } from './../../providers/database';
 })
 export class MyModal {
 
-    private db: SQLiteObject;
 
     myForm: FormGroup;
     chore: any;
@@ -35,7 +33,7 @@ export class MyModal {
         mail: ''
     };
 
-    constructor(private formBuilder: FormBuilder, params: NavParams, private sqlite: SQLite, private databaseprovider: DatabaseProvider,
+    constructor(private formBuilder: FormBuilder, params: NavParams, private databaseprovider: DatabaseProvider,
         private nav: NavController, private viewCtrl: ViewController, public alertctrl: AlertController) {
 
         console.log('hola add: ' + params.get('chore'));
@@ -111,8 +109,12 @@ export class MyModal {
                     text: 'Yes',
                     handler: () => {
                         this.viewCtrl.dismiss();
-
-                        
+                        console.log("Add " + this.chore + ' ' + this.description + ' ' + this.note + ' ' + this.mail + ' ' + this.localDateAlarm);
+                        this.databaseprovider.addtask(this.chore,
+                            this.description,
+                            this.note,                
+                            this.mail,
+                            this.localDateAlarm,);
                     }
                 },
                 {
