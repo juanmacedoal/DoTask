@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { NavParams, Platform, ViewController, NavController, ModalController } from 'ionic-angular';
 import { MyModal } from '../addchore/add';
+import { DatabaseProvider } from './../../providers/database';
 
 @Component({
   selector: 'page-list',
@@ -25,7 +26,8 @@ export class ListPage {
   tomorrowDate4: any;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController,
+  private databaseprovider: DatabaseProvider) {
 
     this.assign();
     this.fillArrays();
@@ -35,6 +37,19 @@ export class ListPage {
     console.log(this.tomorrowDate2);
     console.log(this.tomorrowDate3);
 
+    this.databaseprovider.getDatabaseState().subscribe(rdy => {
+      if (rdy) {
+        this.loadTask();
+      }
+    })
+
+  }
+
+  loadTask() {
+    this.databaseprovider.getAlltask().then(data => {
+      this.todos = data;
+      console.log(data);
+    })
   }
 
   assign(){
@@ -47,14 +62,14 @@ export class ListPage {
     this.tomorrowDate3 = (new Date().getDate() + 3).toString() + '/' + (new Date().getMonth() + 1).toString() + '/' + new Date().getFullYear().toString();
     this.tomorrowDate4 = (new Date().getDate() + 4).toString() + '/' + (new Date().getMonth() + 1).toString() + '/' + new Date().getFullYear().toString();
     this.localDate = new Date().getDate().toString() + '/' + (new Date().getMonth() + 1).toString() + '/' + new Date().getFullYear().toString();
-
+/*
     this.todos = [
-    {chore: 'hola1', description: 'a3', note: 'aaa', localDateAlarm: new Date().getDate().toString() + '/' + (new Date().getMonth() + 1).toString() + '/' + new Date().getFullYear().toString(), mail: 'aaa'},
+    { chore: 'hola1', description: 'a3', note: 'aaa', localDateAlarm: new Date().getDate().toString() + '/' + (new Date().getMonth() + 1).toString() + '/' + new Date().getFullYear().toString(), mail: 'aaa'},
     { chore: 'vaya2', description: 'a1', note: 's', localDateAlarm: '28/9/2017', mail: 'aaa' },
     { chore: 'vaya5', description: 'a534', note: '43s', localDateAlarm: '28/9/2017', mail: 'aaa' },
     { chore: 'vaya8', description: 'a1', note: 's', localDateAlarm: '30/9/2017', mail: 'aaa' },
     { chore: 'hola3', description: 'a2', note: 'a', localDateAlarm: '29/9/2017', mail: 'aaa' }];
-
+*/
   }
 
 
@@ -116,6 +131,15 @@ export class ListPage {
 
     let modal = this.modalCtrl.create(MyModal, { chore: this.todos.find(x => x.chore === chore) });
     modal.present();
+  }
+
+  checkItem(chore){
+    this.databaseprovider.checkTask(chore);
+
+  }
+
+  removeItem(){
+
   }
 
 }
