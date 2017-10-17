@@ -37,12 +37,17 @@ export class ListPage {
     console.log(this.tomorrowDate2);
     console.log(this.tomorrowDate3);
 
+    this.fillList();
+    
+
+  }
+
+  fillList(){
     this.databaseprovider.getDatabaseState().subscribe(rdy => {
       if (rdy) {
         this.loadTask();
       }
     })
-
   }
 
   loadTask() {

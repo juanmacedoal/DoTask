@@ -28,8 +28,8 @@ export class DatabaseProvider {
                 .then((db: SQLiteObject) => {
 
                     this.database = db;
-                    this.database.executeSql('create table if not exists' 
-                    + 'task(chore VARCHAR(32), description VARCHAR(32), note VARCHAR(32), mail VARCHAR(32), alarm VARCHAR(32), check INTEGER)', {})
+                    this.database.executeSql('create table if not exists ' 
+                    + 'task(ready INTEGER, chore VARCHAR(32), description VARCHAR(32), note VARCHAR(32), mail VARCHAR(32), alarm VARCHAR(32))', {})
                         .then(() => console.log('Executed SQL'))
                         .catch(e => console.log(e));
                         this.databaseReady.next(true);
@@ -41,10 +41,10 @@ export class DatabaseProvider {
 
 
     addtask(chore, description, note, mail, localDateAlarm) {
-        let sql = 'INSERT INTO task(chore, description, note, mail, alarm, check) VALUES(?,?,?,?,?,?)';
+        let sql = 'INSERT INTO task(ready, chore, description, note, mail, alarm) VALUES(?,?,?,?,?,?)';
         console.log("Insert " + chore + ' ' + description + ' ' + note + ' ' + mail + ' ' + localDateAlarm);
        
-        this.database.executeSql(sql, [chore, description, note, mail, localDateAlarm, 0])
+        this.database.executeSql(sql, [0, chore, description, note, mail, localDateAlarm])
             .then(response => {
 
                 console.log('save');
@@ -65,7 +65,7 @@ export class DatabaseProvider {
                     console.log(data.rows.item(i).localDateAlarm);
                     todos.push({
                         chore: data.rows.item(i).chore, description: data.rows.item(i).description, note: data.rows.item(i).note, 
-                        mail: data.rows.item(i).mail, localDateAlarm: data.rows.item(i).alarm, check: data.rows.item(i).check
+                        mail: data.rows.item(i).mail, localDateAlarm: data.rows.item(i).alarm, ready: data.rows.item(i).ready
                     });
                 }
             }
@@ -84,7 +84,7 @@ export class DatabaseProvider {
     }
 
     checkTask(chore) {
-        let sql = 'UPDATE category SET  check = ? WHERE chore = ?';
+        let sql = 'UPDATE category SET  ready = ? WHERE chore = ?';
         return this.database.executeSql(sql, 
             [1, chore.chore]);
     }

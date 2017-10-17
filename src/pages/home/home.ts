@@ -21,12 +21,16 @@ export class HomePage {
     this.assign();
 
     console.log(this.todos);
+    this.fillHome();
+
+  }
+
+  fillHome(){
     this.databaseprovider.getDatabaseState().subscribe(rdy => {
       if (rdy) {
         this.loadTask();
       }
     })
-
   }
 
   loadTask() {
@@ -99,6 +103,11 @@ export class HomePage {
          count++;
         }
        
+      }
+
+      checkItem(chore){
+        this.databaseprovider.checkTask(chore);
+    
       }
 
 

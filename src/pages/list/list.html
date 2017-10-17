@@ -87,28 +87,4 @@
       </div>
     </div>
   </ion-list>
-  <ion-list>
-    <ion-label style="white-space: normal; font-weight:bold;" *ngIf="date5 != ''">{{ tomorrowDate4}}</ion-label>
-    <div *ngFor="let todo of todos; let j = index">
-      <div>
-        <ion-item-sliding>
-          <button ion-item (click)="viewChore(todo.chore)">
-            <ion-label style="white-space: normal;">{{ todo.chore }}</ion-label>
-          </button>
-          <ion-item-options>
-            <button danger style="background-color:red" (click)="removeItem()">
-              <ion-icon name="trash">Remove</ion-icon>
-            </button>
-            <button danger (click)="checkItem()">
-              <ion-icon name="checkmark">Check</ion-icon>
-            </button>
-          </ion-item-options>
-        </ion-item-sliding>
-      </div>
-    </div>
-  </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from
-    <b>{{selectedItem.title}}</b>
-  </div>
 </ion-content>

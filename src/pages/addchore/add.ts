@@ -127,6 +127,10 @@ export class MyModal {
         confirm.present();
     }
 
+    editItem(chore){
+        this.databaseprovider.editTask(chore)
+      }
+
 
 
 }

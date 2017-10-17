@@ -28,7 +28,9 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public modalCtrl: ModalController, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public modalCtrl: ModalController, public platform: Platform, 
+    public statusBar: StatusBar, public splashScreen: SplashScreen,public home: HomePage,
+    public list: ListPage) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -59,5 +61,9 @@ export class MyApp {
     let modal = this.modalCtrl.create(MyModal, {chore: this.todos});
 
         modal.present();
+        this.home.fillHome();
+        this.list.fillList();
   }
+  
+  
 }
